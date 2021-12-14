@@ -1,0 +1,46 @@
+{
+  "name": "why-term",
+  "version": "0.1.0",
+  "private": true,
+  "main": "build/why-term.js",
+  "scripts": {
+    "prebuild": "rimraf build/",
+    "build": "tsc --project tsconfig.build.json",
+    "check": "npm-check --update",
+    "docker:build": "docker build --tag why-term:latest .",
+    "docker:build:base": "docker build --file base.dockerfile --tag why-term:latest .",
+    "docker:login": "docker login",
+    "docker:pull": "docker pull why-term:latest",
+    "docker:push": "docker push why-term:latest",
+    "docker:push:base": "docker push why-term:base",
+    "format": "prettier --write .",
+    "start": "ts-node-dev --require dotenv/config --transpile-only src/why-term.ts",
+    "lint": "eslint --fix ."
+  },
+  "dependencies": {
+    "fastify": "^3.24.1",
+    "fastify-plugin": "^3.0.0",
+    "fastify-static": "^4.5.0",
+    "fastify-websocket": "^4.0.0",
+    "pino": "^7.5.1",
+    "zod": "^3.11.6"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.11",
+    "@types/pino": "^7.0.5",
+    "@types/ws": "^8.2.2",
+    "@typescript-eslint/eslint-plugin": "^5.7.0",
+    "@typescript-eslint/parser": "^5.7.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nexe": "^4.0.0-beta.19",
+    "npm-check": "^5.9.2",
+    "prettier": "^2.5.0",
+    "rimraf": "^3.0.2",
+    "ts-node-dev": "^1.1.8",
+    "typescript": "^4.5.2"
+  }
+}
